@@ -1,8 +1,7 @@
+import AuthScreen from "./AuthScreen"
+import HomeScreen from "./HomeScreen"
 
 export default function HomePage() {
-  return (
-    <div>
-      <div>HomePage</div>
-    </div>
-  )
+    const user=false
+  return <div>{user ? <HomeScreen/> : <AuthScreen />}</div>
 }
