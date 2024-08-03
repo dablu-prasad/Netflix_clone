@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuthStore } from "../store/authUser";
 
 export default function SignUpPage() {
     const {searchParams} =new URL(document.location)
@@ -11,6 +12,7 @@ username:"",
 password:""
 });
 
+const {signup}=useAuthStore();
  const handleChanges=(e)=>{
     const {name,value}=e.target
     setValue(preState=>({
@@ -19,8 +21,9 @@ password:""
  }  
  const onhandleSubmit=(e)=>{
     e.preventDefault();
-    console.log("Email Data",value)
-
+    console.log("Email Data",value.email)
+   const data={email:value?.email,username:value?.username,password:value?.password}
+signup(data)
  }
  
  return (
